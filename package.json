@@ -9,8 +9,11 @@
     "type": "git",
     "url": "git://github.com/oakmac/chessboardjs.git"
   },
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "dependencies": {
+    "chess.js": "^1.4.0",
     "jquery": ">=3.4.1"
   },
   "devDependencies": {
@@ -18,7 +21,7 @@
     "fs-plus": "3.1.1",
     "kidif": "1.1.0",
     "mustache": "2.3.0",
-    "standard": "10.0.2",
+    "standard": "^17.1.2",
     "uglify-js": "3.6.0"
   },
   "scripts": {
