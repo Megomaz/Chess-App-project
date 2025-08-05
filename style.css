@@ -1,0 +1,94 @@
+/* Background for the whole page */
+body {
+    /* Gradient background from light to slightly darker */
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    
+    /* Make sure it covers the entire viewport */
+    min-height: 100vh;
+  
+    /* Flex setup for centering content vertically and horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+    margin: 0;
+    padding: 50px 20px;
+    
+    /* Use a clean, modern font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+/* Container for the controls */
+#controls {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+/* Style buttons with a modern look */
+#controls button {
+  background-color: #4CAF50; /* green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#controls button:hover {
+  background-color: #45a049;
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+/* Move History container */
+#history {
+  margin-top: 25px;
+  max-width: 400px;
+  width: 100%;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading inside Move History */
+#history h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Each move line */
+#history-list {
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  padding-right: 10px; /* for scrollbar */
+}
+
+/* Optional: style individual moves */
+#history-list span {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* Highlight last move */
+#history-list span:last-child {
+  background-color: #d4edda; /* light green */
+  font-weight: 600;
+}

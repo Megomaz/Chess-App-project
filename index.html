@@ -5,17 +5,22 @@
   <title>Chess App</title>
   <link rel="stylesheet" href="chessboard/chessboard.min.css">
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
-    }
-  </style>
 </head>
 <body>
-
     <div id="board1" style="width: 400px"></div>
+
+    <div id="controls">
+      <button onclick="resetGame()">Reset</button>
+      <button onclick="undoMove()">Undo</button>
+    </div>
+    <div id="status"></div>
+    <div id="history"></div>
+
+    <div id="history">
+      <h3>Move History</h3>
+      <div id="history-list"></div>
+    </div>
+  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.12.0/chess.min.js"></script>
     <script src="chessboard/chessboard.min.js"></script>

@@ -1,5 +1,5 @@
 const game = new Chess();
-console.log("Chess:", typeof Chess);
+let moveHistory = [];
 // Set up the board with pieces in the starting position
 // and make pieces draggable so users can move them
 const board = Chessboard('board1', {
@@ -10,9 +10,6 @@ const board = Chessboard('board1', {
     onMouseoutSquare: onMouseoutSquare    // clear highlights when mouse leaves
 });  
 
-$(document).ready(function () {
-    game = new Chess();
-});
 
 // This runs whenever a piece is dropped on the board
 function onDrop(source, target) {
@@ -27,13 +24,30 @@ function onDrop(source, target) {
     });
 
     // If move is invalid, snap the piece back to where it was
-    if (move === null) {
-        console.log(`Invalid move from ${source} to ${target}`);
-        return 'snapback';
-    }
+    if (move === null) return 'snapback';
+
     board.position(game.fen());
+
+    // Tracks and displays move history
+    moveHistory.push(move.san); // Standard Algebraic Notation (e.g., e4, Nf3)
+    updateMoveHistory();
+
+    if (game.in_checkmate()) {
+        alert("Checkmate!");
+    } else if (game.in_check()) {
+        console.log("Check!");
+    }
+    
 }
 
+function updateMoveHistory() {
+    const historyDiv = document.getElementById("history-list");
+    if (!historyDiv) return;
+
+    historyDiv.innerHTML = moveHistory
+      .map((m, i) => `<span>${i + 1}. ${m}</span>`)
+      .join("");
+}
 
 // When the user hovers over a square, show all valid destination squares
 function onMouseoverSquare(square, piece) {
@@ -72,4 +86,19 @@ function greySquare(square) {
 // Clears all square highlights from the board
 function removeGreySquares() {
     $('#board1 .square-55d63').css('background', '');
+}
+
+function resetGame() {
+    game.reset();
+    board.start();
+    moveHistory = [];
+    updateMoveHistory();
+    document.getElementById("status").innerText = "";
+}
+
+function undoMove() {
+    game.undo(); // undoes last move
+    board.position(game.fen());
+    moveHistory.pop();
+    updateMoveHistory();
 }
